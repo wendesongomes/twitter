@@ -9,7 +9,27 @@ import LocationOnIcon from '@mui/icons-material/LocationOn'
 import Image from 'next/image'
 import React from 'react'
 
-export default function Modal(props) {
+interface Todo {
+  text: string
+  isLiked: boolean
+}
+
+interface ModalProps {
+  modalVisibility: boolean
+  value: string
+  setValue: React.Dispatch<React.SetStateAction<string>>
+  todos: Todo[]
+  setTodos: React.Dispatch<React.SetStateAction<Todo[]>>
+  toggleActive: () => void
+  disabledButtons: boolean
+}
+
+interface Todo {
+  text: string
+  isLiked: boolean
+}
+
+export default function Modal(props: ModalProps) {
   const modalVisibility = () => {
     return props.modalVisibility ? ' flex' : ' hidden'
   }

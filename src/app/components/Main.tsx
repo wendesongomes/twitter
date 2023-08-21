@@ -1,5 +1,3 @@
-'use client'
-
 import Image from 'next/image'
 import ImageIcon from '@mui/icons-material/Image'
 import GifBoxIcon from '@mui/icons-material/GifBox'
@@ -16,7 +14,20 @@ import DeleteIcon from '@mui/icons-material/Delete'
 import FavoriteIcon from '@mui/icons-material/Favorite'
 import React, { useState } from 'react'
 
-export default function Main(props) {
+interface Todo {
+  text: string
+  isLiked: boolean
+}
+
+interface Props {
+  todos: Todo[]
+  setTodos: (todos: Todo[]) => void
+  value: string
+  setValue: (value: string) => void
+  disabledButtons: boolean
+}
+
+export default function Main(props: Props) {
   const [userModal, setUserModal] = useState(false)
 
   const mouseEnter = () => {
@@ -51,7 +62,7 @@ export default function Main(props) {
     }
   }
 
-  const changeLike = (id) => {
+  const changeLike = (id: number) => {
     const updateItems = props.todos.map((item, index) => {
       if (index === id) {
         return { ...item, isLiked: !item.isLiked }
@@ -66,7 +77,7 @@ export default function Main(props) {
       <div className="flex flex-col gap-1 w-full top-0 sticky backdrop-blur-md">
         <h1 className="font-bold text-xl mx-3 my-2">Página Inicial</h1>
         <div className="w-full flex stify-between border-b-[1px] border-stone-700">
-          <div className="w-3/6 flex flex-col justify-center items-center font-bold  hover:bg-stone-600 ">
+          <div className="w-3/6 flex flex-col justify-center items-center font-bold hover:bg-stone-600">
             <input
               type="radio"
               name="forYou"
@@ -80,7 +91,7 @@ export default function Main(props) {
               Para você
             </label>
           </div>
-          <div className="w-3/6 flex flex-col justify-center items-center font-bold  hover:bg-stone-600 ">
+          <div className="w-3/6 flex flex-col justify-center items-center font-bold hover:bg-stone-600">
             <input
               type="radio"
               name="forYou"
@@ -137,10 +148,10 @@ export default function Main(props) {
       </form>
 
       <div className="flex flex-col-reverse">
-        {props.todos.map(({ text, isLiked }, index) => (
+        {props.todos.map(({ text, isLiked }: Todo, index: number) => (
           <div
             key={index}
-            className="flex w-full  items-start gap-3 p-3 border-b-[1px] border-stone-700 "
+            className="flex w-full items-start gap-3 p-3 border-b-[1px] border-stone-700"
           >
             <Image
               src={'/fotoPerfil.jpg'}
@@ -209,7 +220,7 @@ export default function Main(props) {
               <p className="break-all whitespace-pre-wrap text-sm">{text}</p>
 
               <div className="flex justify-between mt-3">
-                <div className="p-1 rounded-full cursor-pointer hover:bg-[#4377e725] text-[#ffffff80] hover:text-[#46bcf3] ">
+                <div className="p-1 rounded-full cursor-pointer hover:bg-[#4377e725] text-[#ffffff80] hover:text-[#46bcf3] text-[#ffffff80] hover:text-[#46bcf3] ">
                   <ChatIcon className="text-xl rounded-full" />
                 </div>
                 <div className="p-1 flex items-center rounded-full cursor-pointer hover:bg-[#56e74325] text-[#ffffff80] hover:text-[#46f34f] ">

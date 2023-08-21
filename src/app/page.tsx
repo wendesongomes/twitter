@@ -6,10 +6,15 @@ import Footer from './components/Footer'
 import Main from './components/Main'
 import Modal from './components/Modal'
 
+interface Todo {
+  text: string
+  isLiked: boolean
+}
+
 export default function Home() {
   const [modalView, setModalView] = useState(false)
-  const [value, setValue] = useState<string>()
-  const [todos, setTodos] = useState([])
+  const [value, setValue] = useState<string>('')
+  const [todos, setTodos] = useState<Todo[]>([])
 
   const modalVisibility = () => {
     if (modalView === true) {
