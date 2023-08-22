@@ -32,7 +32,11 @@ export default function Home() {
   }
 
   return (
-    <div className={`bg-stone-950 w-screen min-h-screen max-h-full flex`}>
+    <body
+      className={`bg-stone-950 w-screen min-h-screen max-h-full flex overflow-x-hidden ${
+        modalView ? ' overflow-hidden' : ' overflow-y-scroll'
+      }`}
+    >
       <Modal
         todos={todos}
         setTodos={setTodos}
@@ -51,6 +55,6 @@ export default function Home() {
         disabledButtons={disabled()}
       />
       <Footer />
-    </div>
+    </body>
   )
 }

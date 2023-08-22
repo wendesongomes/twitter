@@ -14,7 +14,7 @@ import Image from 'next/image'
 
 export default function Aside(props: { toggleActive: () => void }) {
   return (
-    <div className="text-white flex flex-col justify-between sm:px-5 py-3 h-screen lg:w-4/12 min-w-[50px] lg:items-end items-center top-0 sticky">
+    <div className="text-white flex flex-col justify-between sm:px-5 overflow-y-auto overflow-x-hidden py-3 h-screen lg:w-4/12 min-w-[50px] lg:items-end items-center top-0 sticky">
       <div className="flex flex-col gap-3 w-5/12 min-w-[50px] lg:min-w-[200px] max-w-[280px]">
         <div className="flex w-10">
           <div className="flex items-center justify-center cursor-pointer p-2 hover:bg-stone-800 rounded-full">

@@ -54,11 +54,11 @@ export default function Modal(props: ModalProps) {
   return (
     <div
       className={
-        `w-[600px] bg-stone-900 absolute mt-20 left-0 right-0 top-1/4 rounded-xl m-auto -translate-y-2/4 z-10` +
+        `sm:w-[600px] sm:h-auto h-screen w-screen bg-stone-900 fixed sm:mt-20 sm:left-0 sm:right-0 sm:top-1/4 sm:rounded-xl sm:m-auto sm:-translate-y-2/4 z-10` +
         modalVisibility()
       }
     >
-      <div className="w-full h-full flex flex-col justify-around">
+      <div className="w-full h-full flex flex-col sm:justify-around">
         <button
           onClick={props.toggleActive}
           className="flex justify-center items-center rounded-full w-5 h-5 m-4"
@@ -91,7 +91,7 @@ export default function Modal(props: ModalProps) {
             />
           </div>
 
-          <div className="flex justify-between items-center border-t-[1px] py-3 border-stone-700">
+          <div className="flex justify-between items-center border-t-[1px] py-3 sm:px-0 px-3 border-stone-700">
             <div className="ml-4 flex gap-3 justify-center items-center">
               <ImageIcon className="text-base cursor-pointer text-blue-400" />
               <GifBoxIcon className="text-base cursor-pointer text-blue-400" />

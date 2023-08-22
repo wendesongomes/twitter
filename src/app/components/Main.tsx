@@ -82,6 +82,7 @@ export default function Main(props: Props) {
               type="radio"
               name="forYou"
               id="forYou"
+              defaultChecked
               className="w-0 h-0 checked:opacity-100 opacity-0 before:w-16 before:h-1 before:top-[110px] before:-ml-8 before:bg-blue-400 before:fixed before:rounded-md"
             />
             <label
@@ -125,7 +126,7 @@ export default function Main(props: Props) {
             value={props.value}
             onChange={(e) => props.setValue(e.target.value)}
             placeholder="O que está acontecendo?"
-            className="bg-stone-950 w-5/6 mt-5 outline-none break-all resize-y"
+            className="bg-stone-950 w-full mt-5 outline-none break-all resize-y"
           />
         </div>
         <div className="flex justify-between">
