@@ -34,7 +34,7 @@ export default function Home() {
   return (
     <body
       className={`bg-stone-950 w-screen min-h-screen max-h-full flex overflow-x-hidden ${
-        modalView ? ' overflow-hidden' : ' overflow-y-scroll'
+        modalView ? ' overflow-hidden' : ' overflow-y-auto'
       }`}
     >
       <Modal
