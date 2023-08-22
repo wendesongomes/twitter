@@ -76,7 +76,7 @@ export default function Modal(props: ModalProps) {
         >
           <div className="flex items-start">
             <Image
-              src="/fotoPerfil.jpg"
+              src="/twitter/fotoPerfil.jpg"
               width={40}
               height={40}
               alt="Foto Perfil"

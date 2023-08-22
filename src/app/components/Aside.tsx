@@ -18,7 +18,7 @@ export default function Aside(props: { toggleActive: () => void }) {
       <div className="flex flex-col gap-3 w-5/12 min-w-[50px] lg:min-w-[200px] max-w-[280px]">
         <div className="flex w-10">
           <div className="flex items-center justify-center cursor-pointer p-2 hover:bg-stone-800 rounded-full">
-            <Image src={'/logo-x.png'} width={25} height={25} alt="" />
+            <Image src={'/twitter/logo-x.png'} width={25} height={25} alt="" />
           </div>
         </div>
         <div className="flex gap-2 cursor-pointer hover:bg-stone-800 rounded-full items-center w-10 lg:w-full p-2">
@@ -88,7 +88,7 @@ export default function Aside(props: { toggleActive: () => void }) {
         <div className="flex w-full justify-between items-center hover:bg-stone-800 rounded-full cursor-pointer">
           <div className="flex items-center lg:gap-3 p-2">
             <Image
-              src="/fotoPerfil.jpg"
+              src="/twitter/fotoPerfil.jpg"
               width={40}
               height={40}
               alt="Foto Perfil"

@@ -18,7 +18,7 @@ export default function Footer() {
         <div className="flex gap-5 justify-between items-center p-3">
           <div className="flex gap-2">
             <Image
-              src={'/fotoPerfil_Leo.jpg'}
+              src={'/twitter/fotoPerfil_Leo.jpg'}
               width={40}
               height={30}
               alt="Foto do leo"
@@ -37,7 +37,7 @@ export default function Footer() {
         <div className="flex gap-5 justify-between items-center p-3">
           <div className="flex gap-2">
             <Image
-              src={'/fotoPerfil_Leo.jpg'}
+              src={'/twitter/fotoPerfil_Leo.jpg'}
               width={40}
               height={30}
               alt="Foto do leo"
@@ -56,7 +56,7 @@ export default function Footer() {
         <div className="flex gap-5 justify-between items-center p-3">
           <div className="flex gap-2">
             <Image
-              src={'/ImagePerfil_DomLucaz.png'}
+              src={'/twitter/ImagePerfil_DomLucaz.png'}
               width={40}
               height={30}
               alt="Foto do leo"

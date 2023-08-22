@@ -116,7 +116,7 @@ export default function Main(props: Props) {
       >
         <div className="flex items-start mt-2">
           <Image
-            src="/fotoPerfil.jpg"
+            src="/twitter/fotoPerfil.jpg"
             width={40}
             height={40}
             alt="Foto Perfil"
@@ -156,7 +156,7 @@ export default function Main(props: Props) {
               className="flex w-full items-start gap-3 p-3 border-b-[1px] border-stone-700"
             >
               <Image
-                src={'/fotoPerfil.jpg'}
+                src={'/twitter/fotoPerfil.jpg'}
                 width={35}
                 height={35}
                 alt="Perfil Replay"
@@ -180,7 +180,7 @@ export default function Main(props: Props) {
                       }`}
                     >
                       <Image
-                        src="/fotoPerfil.jpg"
+                        src="/twitter/fotoPerfil.jpg"
                         width={60}
                         height={60}
                         alt="Foto Perfil"
