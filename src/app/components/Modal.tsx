@@ -12,6 +12,7 @@ import React from 'react'
 interface Todo {
   text: string
   isLiked: boolean
+  isUserModalOpen: boolean
 }
 
 interface ModalProps {
@@ -43,6 +44,7 @@ export default function Modal(props: ModalProps) {
         {
           text: props.value,
           isLiked: false,
+          isUserModalOpen: false,
         },
       ])
       props.setValue('')

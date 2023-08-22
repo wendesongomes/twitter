@@ -9,6 +9,7 @@ import Modal from './components/Modal'
 interface Todo {
   text: string
   isLiked: boolean
+  isUserModalOpen: boolean
 }
 
 export default function Home() {
@@ -31,9 +32,7 @@ export default function Home() {
   }
 
   return (
-    <div
-      className={`bg-stone-950 w-screen min-h-screen max-h-full flex justify-between`}
-    >
+    <div className={`bg-stone-950 w-screen min-h-screen max-h-full flex`}>
       <Modal
         todos={todos}
         setTodos={setTodos}

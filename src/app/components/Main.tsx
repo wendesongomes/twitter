@@ -12,11 +12,12 @@ import EqualizerIcon from '@mui/icons-material/Equalizer'
 import RepeatIcon from '@mui/icons-material/Repeat'
 import DeleteIcon from '@mui/icons-material/Delete'
 import FavoriteIcon from '@mui/icons-material/Favorite'
-import React, { useState } from 'react'
+import React from 'react'
 
 interface Todo {
   text: string
   isLiked: boolean
+  isUserModalOpen: boolean
 }
 
 interface Props {
@@ -28,18 +29,16 @@ interface Props {
 }
 
 export default function Main(props: Props) {
-  const [userModal, setUserModal] = useState(false)
-
-  const mouseEnter = () => {
-    setUserModal(true)
+  const mouseEnter = (index: number) => {
+    const updatedTodos = [...props.todos]
+    updatedTodos[index].isUserModalOpen = true
+    props.setTodos(updatedTodos)
   }
 
-  const mouseExit = () => {
-    setUserModal(false)
-  }
-
-  const modalPerfil = () => {
-    return userModal ? ' flex' : ' hidden'
+  const mouseExit = (index: number) => {
+    const updatedTodos = [...props.todos]
+    updatedTodos[index].isUserModalOpen = false
+    props.setTodos(updatedTodos)
   }
 
   const deleteTodo = (key: number) => {
@@ -56,6 +55,7 @@ export default function Main(props: Props) {
         {
           text: props.value,
           isLiked: false,
+          isUserModalOpen: false,
         },
       ])
       props.setValue('')
@@ -73,7 +73,7 @@ export default function Main(props: Props) {
   }
 
   return (
-    <div className="text-white min-w-[450px] md:mr-0 mr-4 md:w-2/6 w-full border-stone-700 border-r-[1px] border-l-[1px]">
+    <div className="text-white sm:min-w-[600px] w-full md:mr-0 mr-4 md:w-2/6 border-stone-700 border-r-[1px] border-l-[1px]">
       <div className="flex flex-col gap-1 w-full top-0 sticky backdrop-blur-md">
         <h1 className="font-bold text-xl mx-3 my-2">Página Inicial</h1>
         <div className="w-full flex stify-between border-b-[1px] border-stone-700">
@@ -148,104 +148,105 @@ export default function Main(props: Props) {
       </form>
 
       <div className="flex flex-col-reverse">
-        {props.todos.map(({ text, isLiked }: Todo, index: number) => (
-          <div
-            key={index}
-            className="flex w-full items-start gap-3 p-3 border-b-[1px] border-stone-700"
-          >
-            <Image
-              src={'/fotoPerfil.jpg'}
-              width={35}
-              height={35}
-              alt="Perfil Replay"
-              className=" rounded-full"
-            />
+        {props.todos.map(
+          ({ text, isLiked, isUserModalOpen }: Todo, index: number) => (
+            <div
+              key={index}
+              className="flex w-full items-start gap-3 p-3 border-b-[1px] border-stone-700"
+            >
+              <Image
+                src={'/fotoPerfil.jpg'}
+                width={35}
+                height={35}
+                alt="Perfil Replay"
+                className=" rounded-full"
+              />
 
-            <div className="flex flex-col w-full">
-              <div className="flex justify-between">
-                <div className="flex gap-2 items-center">
-                  <a
-                    onMouseEnter={() => mouseEnter()}
-                    onMouseLeave={() => mouseExit()}
-                    href="#"
-                    className="font-bold hover:underline"
-                  >
-                    Wendeson
-                  </a>
-                  <div
-                    className={
-                      `absolute mt-56 bg-stone-950 p-5 gap-3 shadow-stone-800 shadow-2xl rounded-lg flex-col` +
-                      modalPerfil()
-                    }
-                  >
-                    <Image
-                      src="/fotoPerfil.jpg"
-                      width={60}
-                      height={60}
-                      alt="Foto Perfil"
-                      className="rounded-full "
-                    />
-                    <div>
-                      <p className="font-bold hover:underline text-sm">
-                        Wendeson
-                      </p>
-                      <p className="font-light text-xs text-stone-500 cursor-pointer">
-                        @WendesonJS
-                      </p>
-                    </div>
-                    <p className="text-xs">FrontEnd Developer</p>
-                    <div className="flex gap-6 text-xs">
-                      <div className="flex gap-1">
-                        <p className="font-bold">98</p>
-                        <p>Seguindo</p>
+              <div className="flex flex-col w-full">
+                <div className="flex justify-between">
+                  <div className="flex gap-2 items-center">
+                    <a
+                      onMouseEnter={() => mouseEnter(index)}
+                      onMouseLeave={() => mouseExit(index)}
+                      href="#"
+                      className="font-bold hover:underline"
+                    >
+                      Wendeson
+                    </a>
+                    <div
+                      className={`absolute mt-56 bg-stone-950 p-5 gap-3 shadow-stone-800 shadow-2xl rounded-lg flex-col ${
+                        isUserModalOpen ? 'flex' : 'hidden'
+                      }`}
+                    >
+                      <Image
+                        src="/fotoPerfil.jpg"
+                        width={60}
+                        height={60}
+                        alt="Foto Perfil"
+                        className="rounded-full "
+                      />
+                      <div>
+                        <p className="font-bold hover:underline text-sm">
+                          Wendeson
+                        </p>
+                        <p className="font-light text-xs text-stone-500 cursor-pointer">
+                          @WendesonJS
+                        </p>
                       </div>
-                      <div className="flex gap-1">
-                        <p className="font-bold">66</p>
-                        <p>Seguidores</p>
+                      <p className="text-xs">FrontEnd Developer</p>
+                      <div className="flex gap-6 text-xs">
+                        <div className="flex gap-1">
+                          <p className="font-bold">98</p>
+                          <p>Seguindo</p>
+                        </div>
+                        <div className="flex gap-1">
+                          <p className="font-bold">66</p>
+                          <p>Seguidores</p>
+                        </div>
                       </div>
                     </div>
+                    <p className="font-light text-sm text-stone-500 cursor-pointer">
+                      @WendesonJS
+                    </p>
                   </div>
-                  <p className="font-light text-sm text-stone-500 cursor-pointer">
-                    @WendesonJS
-                  </p>
+                  <button
+                    onClick={() => deleteTodo(index)}
+                    className="cursor-pointer text-[#ffffff80] hover:text-[#f34646]"
+                  >
+                    <DeleteIcon className="text-base" />
+                  </button>
                 </div>
-                <button
-                  onClick={() => deleteTodo(index)}
-                  className="cursor-pointer text-[#ffffff80] hover:text-[#f34646]"
-                >
-                  <DeleteIcon className="text-base" />
-                </button>
-              </div>
 
-              <p className="break-all whitespace-pre-wrap text-sm">{text}</p>
+                <p className="break-all whitespace-pre-wrap text-sm">{text}</p>
 
-              <div className="flex justify-between mt-3">
-                <div className="p-1 rounded-full cursor-pointer hover:bg-[#4377e725] text-[#ffffff80] hover:text-[#46bcf3] text-[#ffffff80] hover:text-[#46bcf3] ">
-                  <ChatIcon className="text-xl rounded-full" />
-                </div>
-                <div className="p-1 flex items-center rounded-full cursor-pointer hover:bg-[#56e74325] text-[#ffffff80] hover:text-[#46f34f] ">
-                  <RepeatIcon className="text-xl rounded-full" />
-                </div>
-                <button
-                  onClick={(e) => changeLike(index)}
-                  className="p-1 rounded-full cursor-pointer hover:bg-[#e7434325] text-[#ffffff80] hover:text-[#f34646] "
-                >
-                  {isLiked ? (
-                    <FavoriteIcon className="text-red-700" />
-                  ) : (
-                    <FavoriteBorderIcon />
-                  )}
-                </button>
-                <div className="p-1 rounded-full cursor-pointer hover:bg-[#4377e725] text-[#ffffff80] hover:text-[#46bcf3] ">
-                  <EqualizerIcon className="text-xl rounded-full" />
-                </div>
-                <div className="p-1 rounded-full cursor-pointer hover:bg-[#4377e725] text-[#ffffff80] hover:text-[#46bcf3] ">
-                  <FileUploadIcon className="text-xl rounded-full" />
+                <div className="flex justify-between mt-3">
+                  <div className="p-1 rounded-full cursor-pointer hover:bg-[#4377e725] text-[#ffffff80] hover:text-[#46bcf3] ">
+                    <ChatIcon className="text-xl rounded-full" />
+                  </div>
+                  <div className="p-1 flex items-center rounded-full cursor-pointer hover:bg-[#56e74325] text-[#ffffff80] hover:text-[#46f34f] ">
+                    <RepeatIcon className="text-xl rounded-full" />
+                  </div>
+                  <button
+                    onClick={(e) => changeLike(index)}
+                    className="p-1 rounded-full cursor-pointer hover:bg-[#e7434325] text-[#ffffff80] hover:text-[#f34646] "
+                  >
+                    {isLiked ? (
+                      <FavoriteIcon className="text-red-700" />
+                    ) : (
+                      <FavoriteBorderIcon />
+                    )}
+                  </button>
+                  <div className="p-1 rounded-full cursor-pointer hover:bg-[#4377e725] text-[#ffffff80] hover:text-[#46bcf3] ">
+                    <EqualizerIcon className="text-xl rounded-full" />
+                  </div>
+                  <div className="p-1 rounded-full cursor-pointer hover:bg-[#4377e725] text-[#ffffff80] hover:text-[#46bcf3] ">
+                    <FileUploadIcon className="text-xl rounded-full" />
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        ))}
+          ),
+        )}
       </div>
     </div>
   )

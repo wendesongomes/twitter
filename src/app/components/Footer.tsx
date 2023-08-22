@@ -3,7 +3,7 @@ import Image from 'next/image'
 
 export default function Footer() {
   return (
-    <div className="flex-col w-2/6 md:flex hidden ">
+    <div className="flex-col w-2/6 md:flex hidden">
       <div className="text-white items-center xl:flex hidden top-0 sticky bg-stone-950">
         <SearchIcon className="absolute ml-6 text-stone-500 " />
         <input
