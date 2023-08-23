@@ -5,5 +5,5 @@ const nextConfig = {
   output: 'export',
   basePath: '/docs',
 }
- 
+
 module.exports = nextConfig
