@@ -3,7 +3,7 @@
  */
 const nextConfig = {
   output: 'export',
-  basePath: '/twitter',
+  basePath: '/docs',
 }
  
 module.exports = nextConfig
