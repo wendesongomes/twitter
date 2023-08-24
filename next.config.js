@@ -3,7 +3,7 @@
  */
 const nextConfig = {
   output: 'export',
-  basePath: '/docs',
+  basePath: '/portfolio',
   },
 }
 
